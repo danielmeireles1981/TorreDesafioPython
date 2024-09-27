@@ -1,0 +1,111 @@
+# pessoas.py
+
+class Pessoa:
+ def __init__(self, nome, telefone, email):
+    self.nome = nome
+    self.telefone = telefone
+    self.email = email
+
+class Cliente(Pessoa):
+ def __init__(self, nome, telefone, email, endereco):
+    super().__init__(nome, telefone, email)
+    self.endereco = endereco
+=======================================================
+# animais.py
+
+class Animal:
+ def __init__(self, nome, raca, idade):
+    self.nome = nome
+    self.raca = raca
+    self.idade = idade
+
+class Pet(Animal):
+ def __init__(self, nome, raca, idade, cliente):
+    super().__init__(nome, raca, idade)
+    self.cliente = cliente
+
+class Adoção(Animal):
+ def __init__(self, nome, raca, idade):
+    super().__init__(nome, raca, idade)
+====================================================
+# consultas.py
+
+class Agenda:
+ def __init__(self):
+    self.consultas = []
+
+ def agendar_consulta(self, consulta):
+    self.consultas.append(consulta)
+
+class Consulta:
+ def __init__(self, data, horario, pet, tratamento, servico):
+    self.data = data
+    self.horario = horario
+    self.pet = pet
+    self.tratamento = tratamento
+    self.servico = servico
+
+class Servico:
+ def __init__(self, tipo, pet):
+    self.tipo = tipo
+    self.pet = pet
+=======================================================================
+# main.py
+
+from pessoas import Pessoa, Cliente
+from animais import Animal, Pet, Adoção
+from consultas import Agenda, Consulta, Servico
+
+# Criação de um dicionário para o menu
+menu = {
+ '1': 'Cadastro de clientes',
+ '2': 'Cadastro de Pets',
+ '3': 'Agendamentos',
+ '4': 'Adoção de Pets',
+ '5': 'Sair',
+}
+
+# Função para imprimir o menu
+def print_menu():
+ print("Menu:")
+ for key, value in menu.items():
+     print(f"{key} - {value}")
+
+# Função para executar o menu
+def run_menu():
+ while True:
+     print_menu()
+     option = input("Escolha uma opção: ")
+
+     if option == '1':
+         nome_cliente = input("Digite o nome do cliente: ")
+         telefone_cliente = input("Digite o telefone do cliente: ")
+         email_cliente = input("Digite o email do cliente: ")
+         endereco_cliente = input("Digite o endereço do cliente: ")
+         cliente = Cliente(nome_cliente, telefone_cliente, email_cliente, endereco_cliente)
+         print(f"Cliente {nome_cliente} cadastrado com sucesso!")
+     elif option == '2':
+         nome_pet = input("Digite o nome do pet: ")
+         raca_pet = input("Digite a raça do pet: ")
+         idade_pet = input("Digite a idade do pet: ")
+         cliente = Cliente('João', '123456789', 'joao@email.com', 'Rua das Flores, 123')
+         pet = Pet(nome_pet, raca_pet, idade_pet, cliente)
+         print(f"Pet {nome_pet} cadastrado com sucesso!")
+     elif option == '3':
+         data_consulta = input("Digite a data da consulta: ")
+         horario_consulta = input("Digite o horário da consulta: ")
+         consulta = Consulta(data_consulta, horario_consulta, pet, 'Vacinação', 'Banho')
+         agenda = Agenda()
+         agenda.agendar_consulta(consulta)
+         print(f"Consulta agendada para {data_consulta} às {horario_consulta} com sucesso!")
+     elif option == '4':
+         print("Adoção de Pets")
+     elif option == '5':
+         print('Obrigado por usar o programa!')
+         exit()
+     else:
+         print('Opção inválida. Por favor, digite um número entre 1 e 5.')
+
+# Execução do menu
+if __name__ == '__main__':
+ run_menu()

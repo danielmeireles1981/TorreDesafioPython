@@ -1,0 +1,11 @@
+cadastroPet.py
+Na class CaninosouFelinos
+
+trocado o __init__ por __int__
+
+
+testeCadastroPet.py
+No from foi tirado o s do Aves
+Nas listas foi trocado o [] por ()
+No if tipoAnimal == 1, tem que tirar o int do input
+No def menu colcado o ;
